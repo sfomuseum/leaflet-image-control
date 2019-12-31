@@ -2,8 +2,6 @@
 
 ![](docs/images/example-map.png)
 
-![](docs/images/example-plane.png)
-
 A Leaflet control element for generating screenshots of a map's viewport, using [leaflet-image](https://github.com/mapbox/leaflet-image) and [FileSaver.js](https://github.com/eligrey/FileSaver.js/).
 
 ## Example
