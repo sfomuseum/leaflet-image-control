@@ -20,7 +20,7 @@ Next, load the Javascript the [leaflet-image](https://github.com/mapbox/leaflet-
 <script type="text/javascript" src="FileSaver.js"></script>
 ```
 
-Finally load the Javascript and CSS libraries for `leaflet.image.control` itself.
+Finally load the Javascript and CSS libraries for `leaflet.image.control` itself. Copies of these files are included in the [src](src) directory.
 
 ```
 <script type="text/javascript" src="leaflet.image.control.js"></script>
