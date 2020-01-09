@@ -69,9 +69,21 @@ map.addControl(image_control);
 
 ## Options
 
-Documentation to follow.
+### on_error
+
+A function to be invoked if there was a problem rendering the map's viewport. The function will be passed the reported error.
+
+### on_success
+
+A function to be invoked when the map's viewport has been successfully rendered. The function will be passed the `L.map` object used for the rendering and a the HTML `canvas` element containing the rendered pixels.
+
+### position
+
+A valid [Leaflet Control](https://leafletjs.com/reference-1.6.0.html#control) position indicating where on the map your control should be placed.
 
 ## See also
 
+* https://leafletjs.com/
+* https://leafletjs.com/examples/layers-control/
 * https://github.com/mapbox/leaflet-image
 * https://github.com/eligrey/FileSaver.js/
