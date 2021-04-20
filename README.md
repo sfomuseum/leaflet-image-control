@@ -34,7 +34,7 @@ var map = L.map("mapid");
 
 var image_opts = {
 	    
-    on_success: function(map, canvas) {
+    on_success: function(map, control, canvas) {
 		
 	var dt = new Date();
 	var iso = dt.toISOString();
@@ -56,7 +56,10 @@ var image_opts = {
 
 	var name = str_parts + ".png";
 
+	control.startSpinning();
+
 	canvas.toBlob(function(blob) {
+	    control.stopSpinning();
 	    saveAs(blob, name);
 	});
     }

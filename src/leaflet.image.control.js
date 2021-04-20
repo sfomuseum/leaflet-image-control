@@ -17,7 +17,7 @@
     L.Control.Image = L.Control.extend({
         options: {
             position: 'topright',
-	    on_success: function(map, canvas) {
+	    on_success: function(map, control, canvas) {
 	    
 		var dt = new Date();
 		var iso = dt.toISOString();
@@ -39,7 +39,7 @@
 		pos = pos.join("-");
 		
 		var name = ymd + "-" + pos + ".png";
-		
+
     		canvas.toBlob(function(blob) {
     		    saveAs(blob, name);
 		});
@@ -75,6 +75,24 @@
 	    // 
 	},
 
+	startSpinner: function(){
+
+	    var _icon = this.icon;
+	    var _spinner = this.spinner;
+
+	    _icon.style.display = "none";
+	    _spinner.style.display = "block";
+	},
+	
+	stopSpinner: function(){
+
+	    var _icon = this.icon;
+	    var _spinner = this.spinner;
+
+	    _icon.style.display = "block";
+	    _spinner.style.display = "none";
+	},
+
 	_click: function (e) {
             L.DomEvent.stopPropagation(e);
             L.DomEvent.preventDefault(e);
@@ -86,22 +104,19 @@
 	    var map = this._map;
 	    var on_success = this.options.on_success;
 	    var on_error = this.options.on_error;
+	    
+	    this.startSpinner();
 
-	    var _icon = this.icon;
-	    var _spinner = this.spinner;
-
-	    _icon.style.display = "none";
-	    _spinner.style.display = "block";
+	    var _self = this;
 
 	    leafletImage(map, function(err, canvas){
-		
-		_icon.style.display = "block";
-		_spinner.style.display = "none";
+	
+		_self.stopSpinner();
 
 		if (err){
 		    on_error(err);
 		} else {
-		    on_success(map, canvas);
+		    on_success(map, _self, canvas);
 		}
 	    });
 	},
